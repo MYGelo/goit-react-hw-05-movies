@@ -2,6 +2,8 @@ import { searchMovies } from 'API';
 import { useEffect, useState } from 'react';
 import css from './Movies.module.css';
 
+import { Link } from 'react-router-dom';
+
 export const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [inputSearch, setInputSearch] = useState('');
@@ -23,7 +25,6 @@ export const Movies = () => {
   const handleSubmit = e => {
     e.preventDefault();
     setInputSearch(search);
-    console.log(inputSearch);
     e.target.reset();
   };
 
@@ -41,9 +42,9 @@ export const Movies = () => {
       </form>
       <ul>
         {movies.map(movie => (
-          <li key={movie.id}>
-            <h2>{movie.title}</h2>
-          </li>
+          <Link to="movieId" key={movie.id}>
+            <p>{movie.title}</p>
+          </Link>
         ))}
       </ul>
     </div>

@@ -3,6 +3,7 @@ import css from './Home.module.css';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { fetchTrendMovies } from 'API';
+
 import { MoviesGallery } from 'components/MoviesGallery/MoviesGallery';
 
 export const Home = () => {
@@ -22,8 +23,3 @@ export const Home = () => {
     </div>
   );
 };
-
-// .then(movies => {
-//   setMovies(prevMovies => [...prevMovies, ...movies]);
-// })
-// .catch(console.error(`error`));

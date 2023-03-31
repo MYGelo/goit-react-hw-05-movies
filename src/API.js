@@ -46,3 +46,21 @@ export const searchMovies = async inputSearch => {
     return Promise.reject(new Error('Sorry something go wrong ;('));
   }
 };
+
+export const searchMovieFull = async inputId => {
+  const url = `${api}movie/${inputId}?api_key=${key}&language=en-US`;
+
+  try {
+    const response = await axios.get(url);
+
+    const movie = response.data;
+
+    if (response.status === 200) {
+      return movie;
+    }
+  } catch (error) {
+    return Promise.reject(new Error('Sorry something go wrong '));
+  }
+};
+
+// return await AXIOS.get(`movie/${movieId}?`).then(res => res.data);
