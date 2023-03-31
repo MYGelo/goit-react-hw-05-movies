@@ -1,6 +1,7 @@
 import { searchMovieFull } from 'API';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import css from './MovieDetails.module.css';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
@@ -15,7 +16,8 @@ export const MovieDetails = () => {
     });
   }, [movieId]);
 
-  const { overview, poster_path, release_date, title, genres } = movieInfo;
+  const { overview, poster_path, release_date, title, genres, tagline } =
+    movieInfo;
   const genre = genres && genres.map(genr => genr.name).join(', ');
 
   return (
@@ -30,6 +32,9 @@ export const MovieDetails = () => {
       </div>
 
       <div>
+        <h2>Tagline</h2>
+        <p>{tagline}</p>
+
         <h2>Overviews:</h2>
         <p>{overview}</p>
 
@@ -37,7 +42,6 @@ export const MovieDetails = () => {
         <p>{release_date}</p>
 
         <h2>Genres</h2>
-
         <p>{genre}</p>
       </div>
     </div>

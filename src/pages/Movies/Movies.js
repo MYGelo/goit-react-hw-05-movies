@@ -42,7 +42,7 @@ export const Movies = () => {
       </form>
       <ul>
         {movies.map(movie => (
-          <Link to="movieId" key={movie.id}>
+          <Link to={`${movie.id}`} key={movie.id}>
             <p>{movie.title}</p>
           </Link>
         ))}
