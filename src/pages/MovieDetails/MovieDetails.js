@@ -21,10 +21,11 @@ export const MovieDetails = () => {
   const genre = genres && genres.map(genr => genr.name).join(', ');
 
   return (
-    <div>
+    <container className={css.container}>
       <div>
         {(
           <img
+            className={css.img}
             src={`https://image.tmdb.org/t/p/w500${poster_path}`}
             alt={title}
           ></img>
@@ -44,6 +45,6 @@ export const MovieDetails = () => {
         <h2>Genres</h2>
         <p>{genre}</p>
       </div>
-    </div>
+    </container>
   );
 };

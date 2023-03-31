@@ -1,4 +1,8 @@
-img {
+.img {
   width: 250px;
   height: 375px;
+  padding: 20px;
+}
+.container {
+  display: flex;
 }
