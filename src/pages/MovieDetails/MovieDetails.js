@@ -24,13 +24,11 @@ export const MovieDetails = () => {
         <BtnBack></BtnBack>
         <div className={css.card}>
           <div>
-            {(
-              <img
-                className={css.img}
-                src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-                alt={title}
-              ></img>
-            ) || <img src="https://via.placeholder.com/560x240" alt="" />}
+            <img
+              className={css.img}
+              src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+              alt={title}
+            ></img>
           </div>
 
           <div className={css.description}>
