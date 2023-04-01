@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const api = `https://api.themoviedb.org/3/`;
 const key = `b4e7b15a3300b6cccec91fe70cf6dc81`;
+// const language = ``;
 
 export const fetchTrendMovies = async () => {
   const url = `${api}trending/all/day?api_key=${key}`;
@@ -47,7 +48,7 @@ export const searchMovies = async inputSearch => {
   }
 };
 
-export const searchMovieFull = async inputId => {
+export const searchMovieInfo = async inputId => {
   const url = `${api}movie/${inputId}?api_key=${key}&language=en-US`;
 
   try {
@@ -63,4 +64,14 @@ export const searchMovieFull = async inputId => {
   }
 };
 
-// return await AXIOS.get(`movie/${movieId}?`).then(res => res.data);
+export const searchCredits = async movieId => {
+  const url = `${api}movie/${movieId}/credits?api_key=${key}&language=en-US`;
+  try {
+    const response = await axios.get(url);
+    if (response.status === 200) {
+      return response.data;
+    }
+  } catch (error) {
+    return Promise.reject(new Error('Sorry something go wrong '));
+  }
+};

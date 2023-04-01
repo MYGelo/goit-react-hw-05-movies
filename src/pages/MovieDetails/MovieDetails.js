@@ -1,17 +1,15 @@
-import { searchMovieFull } from 'API';
+import { searchMovieInfo } from 'API';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { NavLink, Outlet, useParams } from 'react-router-dom';
 import css from './MovieDetails.module.css';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
-  console.log(movieId);
 
   const [movieInfo, setMovieInfo] = useState([]);
-  console.log(movieInfo);
 
   useEffect(() => {
-    searchMovieFull(movieId).then(movie => {
+    searchMovieInfo(movieId).then(movie => {
       setMovieInfo(movie);
     });
   }, [movieId]);
@@ -21,7 +19,7 @@ export const MovieDetails = () => {
   const genre = genres && genres.map(genr => genr.name).join(', ');
 
   return (
-    <container className={css.container}>
+    <div className={css.container}>
       <div>
         {(
           <img
@@ -44,7 +42,9 @@ export const MovieDetails = () => {
 
         <h2>Genres</h2>
         <p>{genre}</p>
+        <NavLink to={`/movies/${movieId}/credits`}>cast</NavLink>
       </div>
-    </container>
+      <Outlet />
+    </div>
   );
 };
