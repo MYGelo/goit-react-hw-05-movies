@@ -31,12 +31,10 @@ export const searchMovies = async inputSearch => {
 
   try {
     const response = await axios.get(url);
-
     const movies = response.data.results.map(result => {
       return {
         id: result.id,
         title: result.title,
-        // name: result.name,
       };
     });
 
@@ -79,6 +77,27 @@ export const searchCredits = async movieId => {
     });
     if (response.status === 200) {
       return cast;
+    }
+  } catch (error) {
+    return Promise.reject(new Error('Sorry something go wrong '));
+  }
+};
+
+export const getReviews = async movieId => {
+  const url = `${api}movie/${movieId}/reviews?api_key=${key}&language=en-US&page=1`;
+
+  try {
+    const response = await axios.get(url);
+    const reviews = response.data.results.map(result => {
+      return {
+        id: result.id,
+        url: result.url,
+        author: result.author,
+        content: result.content,
+      };
+    });
+    if (response.status === 200) {
+      return reviews;
     }
   } catch (error) {
     return Promise.reject(new Error('Sorry something go wrong '));

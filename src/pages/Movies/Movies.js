@@ -6,7 +6,9 @@ import { Link } from 'react-router-dom';
 
 export const Movies = () => {
   const [movies, setMovies] = useState([]);
-  const [inputSearch, setInputSearch] = useState('');
+  const [inputSearch, setInputSearch] = useState(
+    JSON.parse(localStorage.getItem('inputSearch'))
+  );
 
   useEffect(() => {
     searchMovies(inputSearch)
@@ -14,6 +16,10 @@ export const Movies = () => {
         setMovies([...movies]);
       })
       .catch(error => console.log({ error }));
+  }, [inputSearch]);
+
+  useEffect(() => {
+    localStorage.setItem('inputSearch', JSON.stringify(inputSearch));
   }, [inputSearch]);
 
   let search = '';
@@ -29,24 +35,28 @@ export const Movies = () => {
   };
 
   return (
-    <div className={css.container}>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          autoComplete="off"
-          autoFocus
-          placeholder="Search movies"
-          onChange={handleChange}
-        ></input>
-        <button type="submit"> Search </button>
-      </form>
-      <ul>
-        {movies.map(movie => (
-          <Link to={`${movie.id}`} key={movie.id}>
-            <p>{movie.title}</p>
-          </Link>
-        ))}
-      </ul>
-    </div>
+    <hero>
+      <section className={css.container}>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search movies"
+            onChange={handleChange}
+          ></input>
+          <button type="submit"> Search </button>
+        </form>
+        <ul>
+          {movies.map(movie => (
+            <li>
+              <Link to={`${movie.id}`} key={movie.id}>
+                {movie.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </hero>
   );
 };

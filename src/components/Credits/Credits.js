@@ -7,7 +7,6 @@ const tmdb = 'https://image.tmdb.org/t/p/w500';
 export const Credits = () => {
   const [credits, setCredits] = useState([]);
   const { movieId } = useParams();
-  console.log(`credits`, credits);
 
   useEffect(() => {
     searchCredits(movieId).then(credit => setCredits(credit));
@@ -18,7 +17,13 @@ export const Credits = () => {
       <ul>
         {credits.map(item => (
           <li key={item.id}>
-            <img src={`${tmdb}${item.img}`} alt="" width={'150px'}></img>
+            <img
+              src={`${tmdb}${item.img}`}
+              alt=""
+              height={'150px'}
+              width={'100px'}
+            ></img>
+
             <p>{item.name}</p>
             <p>Character:{item.character}</p>
           </li>

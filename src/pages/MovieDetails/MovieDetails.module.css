@@ -3,10 +3,18 @@
   height: 375px;
 }
 .container {
-  display: flex;
-  margin: 10px 0;
+  margin: 10px;
 }
 
 .description {
   margin: 0 0 0 15px;
+}
+.additionInfo {
+  padding: 10px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid grey;
+}
+
+.card {
+  display: flex;
 }
