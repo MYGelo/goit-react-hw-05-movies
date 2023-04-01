@@ -1,8 +1,12 @@
 .img {
   width: 250px;
   height: 375px;
-  padding: 20px;
 }
 .container {
-  /* display: flex; */
+  display: flex;
+  margin: 10px 0;
+}
+
+.description {
+  margin: 0 0 0 15px;
 }

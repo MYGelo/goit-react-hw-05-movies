@@ -19,6 +19,7 @@ export const Home = () => {
 
   return (
     <div className={css.container}>
+      <h1>Trending to day</h1>
       <MoviesGallery movies={movies}></MoviesGallery>
     </div>
   );

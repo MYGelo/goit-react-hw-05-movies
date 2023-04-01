@@ -14,37 +14,43 @@ export const MovieDetails = () => {
     });
   }, [movieId]);
 
-  const { overview, poster_path, release_date, title, genres, tagline } =
-    movieInfo;
+  const {
+    overview,
+    poster_path,
+
+    title,
+    genres,
+    vote_average,
+    original_title,
+  } = movieInfo;
   const genre = genres && genres.map(genr => genr.name).join(', ');
 
   return (
-    <div className={css.container}>
-      <div>
-        {(
-          <img
-            className={css.img}
-            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-            alt={title}
-          ></img>
-        ) || <img src="https://via.placeholder.com/560x240" alt="" />}
+    <>
+      <div className={css.container}>
+        <div>
+          {(
+            <img
+              className={css.img}
+              src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+              alt={title}
+            ></img>
+          ) || <img src="https://via.placeholder.com/560x240" alt="" />}
+        </div>
+
+        <div className={css.description}>
+          <h1>{original_title}</h1>
+          <p>UserScore: {vote_average}</p>
+
+          <h2>Overviews:</h2>
+          <p>{overview}</p>
+
+          <h2>Genres</h2>
+          <p>{genre}</p>
+        </div>
       </div>
-
-      <div>
-        <h2>Tagline</h2>
-        <p>{tagline}</p>
-
-        <h2>Overviews:</h2>
-        <p>{overview}</p>
-
-        <h2>Release date</h2>
-        <p>{release_date}</p>
-
-        <h2>Genres</h2>
-        <p>{genre}</p>
-        <NavLink to={`/movies/${movieId}/credits`}>cast</NavLink>
-      </div>
+      <NavLink to={`/movies/${movieId}/credits`}>cast</NavLink>
       <Outlet />
-    </div>
+    </>
   );
 };

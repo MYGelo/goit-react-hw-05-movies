@@ -68,8 +68,17 @@ export const searchCredits = async movieId => {
   const url = `${api}movie/${movieId}/credits?api_key=${key}&language=en-US`;
   try {
     const response = await axios.get(url);
+
+    const cast = response.data.cast.map(actor => {
+      return {
+        id: actor.id,
+        name: actor.name,
+        img: actor.profile_path,
+        character: actor.character,
+      };
+    });
     if (response.status === 200) {
-      return response.data;
+      return cast;
     }
   } catch (error) {
     return Promise.reject(new Error('Sorry something go wrong '));
