@@ -1,23 +1,15 @@
 import { FcUndo } from 'react-icons/fc';
-import styled from 'styled-components';
 
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const StyledLink = styled(NavLink)`
-  color: black;
-  text-decoration: none;
+export const BtnBack = location => {
+  const backLink = location.location;
 
-  // &.active {
-  //   color: orange;
-  }
-`;
-
-export const BtnBack = () => {
   return (
     <button type="button">
-      <StyledLink to={`/movies`}>
+      <Link to={backLink}>
         <FcUndo /> <span> Go back </span>
-      </StyledLink>
+      </Link>
     </button>
   );
 };

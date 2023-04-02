@@ -1,12 +1,16 @@
 import { searchMovieInfo } from 'API';
 import { BtnBack } from 'components/BtnBack/BtnBack';
 import { useEffect, useState } from 'react';
-import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 import css from './MovieDetails.module.css';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieInfo, setMovieInfo] = useState([]);
+
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/movies';
+  console.log(`MD`, backLinkHref);
 
   useEffect(() => {
     searchMovieInfo(movieId).then(movie => {
@@ -21,7 +25,7 @@ export const MovieDetails = () => {
   return (
     <section>
       <div className={css.container}>
-        <BtnBack></BtnBack>
+        <BtnBack location={backLinkHref}></BtnBack>
         <div className={css.card}>
           <div>
             <img
@@ -47,10 +51,20 @@ export const MovieDetails = () => {
         <span>Additional information</span>
         <ul>
           <li>
-            <NavLink to={`/movies/${movieId}/credits`}>Cast</NavLink>
+            <NavLink
+              to={`/movies/${movieId}/credits`}
+              state={{ from: backLinkHref }}
+            >
+              Cast
+            </NavLink>
           </li>
           <li>
-            <NavLink to={`/movies/${movieId}/review`}>Review</NavLink>
+            <NavLink
+              to={`/movies/${movieId}/review`}
+              state={{ from: backLinkHref }}
+            >
+              Review
+            </NavLink>
           </li>
         </ul>
         <Outlet />

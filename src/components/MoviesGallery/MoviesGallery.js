@@ -5,7 +5,7 @@ export const MoviesGallery = ({ movies }) => {
     <ul>
       {movies.map(movie => (
         <li key={movie.id}>
-          <NavLink to={`/movies/${movie.id}`}>
+          <NavLink to={`/movies/${movie.id}`} state={{ from: `/` }}>
             {movie.title} {movie.name}
           </NavLink>
         </li>
