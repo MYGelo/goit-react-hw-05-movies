@@ -18,11 +18,9 @@ export const Home = () => {
   }, []);
 
   return (
-    <hero>
-      <section className={css.container}>
-        <h1>Trending to day</h1>
-        <MoviesGallery movies={movies}></MoviesGallery>
-      </section>
-    </hero>
+    <section className={css.container}>
+      <h1>Trending to day</h1>
+      <MoviesGallery movies={movies}></MoviesGallery>
+    </section>
   );
 };

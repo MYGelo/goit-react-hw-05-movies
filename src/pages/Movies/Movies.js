@@ -35,28 +35,24 @@ export const Movies = () => {
   };
 
   return (
-    <hero>
-      <section className={css.container}>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            autoComplete="off"
-            autoFocus
-            placeholder="Search movies"
-            onChange={handleChange}
-          ></input>
-          <button type="submit"> Search </button>
-        </form>
-        <ul>
-          {movies.map(movie => (
-            <li>
-              <Link to={`${movie.id}`} key={movie.id}>
-                {movie.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-    </hero>
+    <section className={css.container}>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          autoComplete="off"
+          autoFocus
+          placeholder="Search movies"
+          onChange={handleChange}
+        ></input>
+        <button type="submit"> Search </button>
+      </form>
+      <ul>
+        {movies.map(movie => (
+          <li key={movie.id}>
+            <Link to={`${movie.id}`}>{movie.title}</Link>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 };

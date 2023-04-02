@@ -19,8 +19,8 @@ export const MovieDetails = () => {
   const genre = genres && genres.map(genr => genr.name).join(', ');
 
   return (
-    <hero>
-      <section className={css.container}>
+    <section>
+      <div className={css.container}>
         <BtnBack></BtnBack>
         <div className={css.card}>
           <div>
@@ -42,7 +42,7 @@ export const MovieDetails = () => {
             <p>{genre}</p>
           </div>
         </div>
-      </section>
+      </div>
       <div className={css.additionInfo}>
         <span>Additional information</span>
         <ul>
@@ -55,6 +55,6 @@ export const MovieDetails = () => {
         </ul>
         <Outlet />
       </div>
-    </hero>
+    </section>
   );
 };
