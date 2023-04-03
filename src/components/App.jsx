@@ -2,14 +2,6 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Loader } from './Loader/Loader';
 
-// import { Navigation } from './Navigation/Navigation';
-// import { Home } from 'pages/Home/Home';
-// import { MovieDetails } from 'pages/MovieDetails/MovieDetails';
-// import { Movies } from 'pages/Movies/Movies';
-// import { NotFound } from 'pages/NotFound/NotFound';
-// import { Credits } from './Credits/Credits';
-// import { Review } from './Review/Review';
-
 const Navigation = lazy(() =>
   import('./Navigation/Navigation').then(module => ({
     ...module,
