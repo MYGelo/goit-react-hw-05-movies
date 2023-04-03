@@ -37,7 +37,8 @@ export const MovieDetails = () => {
 
           <div className={css.description}>
             <h1>{original_title}</h1>
-            <p>UserScore: {vote_average}</p>
+            {/* <p>UserScore: {vote_average}</p> */}
+            <p>UserScore: {Math.round(vote_average)}/10</p>
 
             <h2>Overviews:</h2>
             <p>{overview}</p>
