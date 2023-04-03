@@ -1,7 +1,6 @@
 import { searchMovies } from 'API';
 import { useEffect, useState } from 'react';
 import css from './Movies.module.css';
-
 import { Link } from 'react-router-dom';
 
 export const Movies = () => {
@@ -11,15 +10,12 @@ export const Movies = () => {
   );
 
   useEffect(() => {
+    localStorage.setItem('inputSearch', JSON.stringify(inputSearch));
     searchMovies(inputSearch)
       .then(movies => {
         setMovies([...movies]);
       })
       .catch(error => console.log({ error }));
-  }, [inputSearch]);
-
-  useEffect(() => {
-    localStorage.setItem('inputSearch', JSON.stringify(inputSearch));
   }, [inputSearch]);
 
   let search = '';
