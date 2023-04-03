@@ -11,13 +11,14 @@ import { Review } from './Review/Review';
 export const App = () => {
   return (
     <>
-      <Navigation />
       <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:movieId" element={<MovieDetails />}>
-          <Route path="credits" element={<Credits />}></Route>
-          <Route path="review" element={<Review />}></Route>
+        <Route path="/" element={<Navigation />}>
+          <Route index element={<Home />}></Route>
+          <Route path="movies" element={<Movies />} />
+          <Route path="movies/:movieId" element={<MovieDetails />}>
+            <Route path="credits" element={<Credits />}></Route>
+            <Route path="review" element={<Review />}></Route>
+          </Route>
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

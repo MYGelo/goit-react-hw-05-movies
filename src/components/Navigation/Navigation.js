@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import css from './Navigation.module.css';
 
@@ -12,13 +12,19 @@ export const Navigation = () => {
     }
   `;
   return (
-    <header className={css.header}>
-      <StyledLink className={css.nav__link} to="/" end>
-        Home
-      </StyledLink>
-      <StyledLink className={css.nav__link} to="/movies" end>
-        Movies
-      </StyledLink>
-    </header>
+    <>
+      <header className={css.header}>
+        <nav>
+          <StyledLink className={css.nav__link} to="/" end>
+            Home
+          </StyledLink>
+          <StyledLink className={css.nav__link} to="/movies" end>
+            Movies
+          </StyledLink>
+        </nav>
+      </header>
+
+      <Outlet />
+    </>
   );
 };
