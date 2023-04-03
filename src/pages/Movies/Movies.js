@@ -1,32 +1,35 @@
 import { searchMovies } from 'API';
 import { useEffect, useState } from 'react';
 import css from './Movies.module.css';
-import { Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
+import { MoviesGallery } from 'components/MoviesGallery/MoviesGallery';
+// import { SearchForm } from 'components/SearchForm/SearchForm';
 
 export const Movies = () => {
   const [movies, setMovies] = useState([]);
-  const [inputSearch, setInputSearch] = useState(
-    JSON.parse(localStorage.getItem('inputSearch'))
-  );
+  const [searchParams, setSearchParams] = useSearchParams();
+  const querry = searchParams.get('querry') || '';
 
   useEffect(() => {
-    localStorage.setItem('inputSearch', JSON.stringify(inputSearch));
-    searchMovies(inputSearch)
+    searchMovies(querry)
       .then(movies => {
         setMovies([...movies]);
       })
       .catch(error => console.log({ error }));
-  }, [inputSearch]);
+  }, [querry]);
 
   let search = '';
-
   const handleChange = e => {
     search = e.target.value.toLowerCase();
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    setInputSearch(search);
+    if (search === '') {
+      alert('enter movie name');
+    }
+
+    setSearchParams({ querry: search });
     e.target.reset();
   };
 
@@ -42,15 +45,8 @@ export const Movies = () => {
         ></input>
         <button type="submit"> Search </button>
       </form>
-      <ul>
-        {movies.map(movie => (
-          <li key={movie.id}>
-            <Link to={`${movie.id}`} state={{ from: '/movies' }}>
-              {movie.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {/* <SearchForm onSubmit={handleSearchSubmit} /> */}
+      <MoviesGallery movies={movies} />
     </section>
   );
 };
