@@ -2,7 +2,7 @@ import { Home } from 'pages/Home/Home';
 import { MovieDetails } from 'pages/MovieDetails/MovieDetails';
 import { Movies } from 'pages/Movies/Movies';
 import { NotFound } from 'pages/NotFound/NotFound';
-import { BrowserRouter } from 'react-router-dom';
+
 import { Routes, Route } from 'react-router-dom';
 import { Credits } from './Credits/Credits';
 import { Navigation } from './Navigation/Navigation';
@@ -10,7 +10,7 @@ import { Review } from './Review/Review';
 
 export const App = () => {
   return (
-    <BrowserRouter>
+    <>
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />}></Route>
@@ -21,6 +21,6 @@ export const App = () => {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
+    </>
   );
 };
