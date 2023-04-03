@@ -10,7 +10,7 @@ export const MovieDetails = () => {
 
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/movies';
-  console.log(`MD`, backLinkHref);
+  // console.log(`MD`, backLinkHref);
 
   useEffect(() => {
     searchMovieInfo(movieId).then(movie => {
