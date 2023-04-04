@@ -5,7 +5,7 @@ import { useSearchParams } from 'react-router-dom';
 import { MoviesGallery } from 'components/MoviesGallery/MoviesGallery';
 import { SearchForm } from 'components/SearchForm/SearchForm';
 
-export const Movies = () => {
+export default function Movies() {
   const [movies, setMovies] = useState([]);
   const [searchParams] = useSearchParams();
   const querry = searchParams.get('querry') || '';
@@ -24,4 +24,4 @@ export const Movies = () => {
       <MoviesGallery movies={movies} />
     </section>
   );
-};
+}

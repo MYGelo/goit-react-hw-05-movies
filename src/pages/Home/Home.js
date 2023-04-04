@@ -6,7 +6,7 @@ import { fetchTrendMovies } from 'API';
 
 import { MoviesGallery } from 'components/MoviesGallery/MoviesGallery';
 
-export const Home = () => {
+export default function Home() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -23,4 +23,4 @@ export const Home = () => {
       <MoviesGallery movies={movies}></MoviesGallery>
     </section>
   );
-};
+}

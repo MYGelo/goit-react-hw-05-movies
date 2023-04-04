@@ -4,7 +4,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import css from './Navigation.module.css';
 
-export const Navigation = () => {
+export default function Navigation() {
   const StyledLink = styled(NavLink)`
     color: black;
     text-decoration: none;
@@ -31,4 +31,4 @@ export const Navigation = () => {
       </Suspense>
     </>
   );
-};
+}

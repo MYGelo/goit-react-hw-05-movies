@@ -2,49 +2,14 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Loader } from './Loader/Loader';
 
-const Navigation = lazy(() =>
-  import('./Navigation/Navigation').then(module => ({
-    ...module,
-    default: module.Navigation,
-  }))
-);
-const Home = lazy(() =>
-  import('pages/Home/Home').then(module => ({
-    ...module,
-    default: module.Home,
-  }))
-);
-const MovieDetails = lazy(() =>
-  import('pages/MovieDetails/MovieDetails').then(module => ({
-    ...module,
-    default: module.MovieDetails,
-  }))
-);
-const Movies = lazy(() =>
-  import('pages/Movies/Movies').then(module => ({
-    ...module,
-    default: module.Movies,
-  }))
-);
+const Navigation = lazy(() => import('./Navigation/Navigation'));
+const Home = lazy(() => import('pages/Home/Home'));
+const MovieDetails = lazy(() => import('pages/MovieDetails/MovieDetails'));
+const Movies = lazy(() => import('pages/Movies/Movies'));
+const Credits = lazy(() => import('./Credits/Credits'));
+const Review = lazy(() => import('./Review/Review'));
+const NotFound = lazy(() => import('pages/NotFound/NotFound'));
 
-const Credits = lazy(() =>
-  import('./Credits/Credits').then(module => ({
-    ...module,
-    default: module.Credits,
-  }))
-);
-const Review = lazy(() =>
-  import('./Review/Review').then(module => ({
-    ...module,
-    default: module.Review,
-  }))
-);
-const NotFound = lazy(() =>
-  import('pages/NotFound/NotFound').then(module => ({
-    ...module,
-    default: module.NotFound,
-  }))
-);
 export const App = () => {
   return (
     <Suspense fallback={<Loader />}>

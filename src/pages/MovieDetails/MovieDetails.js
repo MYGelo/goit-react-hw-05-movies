@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 import css from './MovieDetails.module.css';
 
-export const MovieDetails = () => {
+export default function MovieDetails() {
   const { movieId } = useParams();
   const [movieInfo, setMovieInfo] = useState([]);
 
@@ -72,4 +72,4 @@ export const MovieDetails = () => {
       </div>
     </section>
   );
-};
+}
